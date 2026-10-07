@@ -491,9 +491,12 @@ function Profile() {
             {[
               "Short-term",
               "Long-term",
-              "Casual",
               "Friends",
-              "Not sure",
+              "Hangouts",
+              "Hookups",
+              "Food",
+              "freaky",
+              "Games"
             ].map((tag) => (
               <button
                 key={tag}
