@@ -1,0 +1,786 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f8f5f2;
+  color: #222;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+/* =================================
+   DARK MODE
+================================= */
+
+body.dark-mode {
+  background: #121212;
+  color: #eeeeee;
+}
+
+/* General form elements */
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+  background: #242424;
+  color: #eeeeee;
+  border-color: #444;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+  color: #999;
+}
+
+body.dark-mode select option {
+  background: #242424;
+  color: #eeeeee;
+}
+
+/* General headings/text */
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode p,
+body.dark-mode label {
+  color: #eeeeee;
+}
+
+/* =================================
+   DARK MODE — NAVBAR
+================================= */
+
+body.dark-mode .navbar {
+  background: #1c1c1c;
+  border-top-color: #333;
+}
+
+body.dark-mode .navbar button {
+  background: #1c1c1c;
+  color: #eeeeee;
+}
+
+body.dark-mode .navbar button:hover {
+  background: #2a2a2a;
+}
+
+/* =================================
+   DARK MODE — BROWSE
+================================= */
+
+body.dark-mode .profile-card {
+  background: #1e1e1e;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.45);
+}
+
+body.dark-mode .profile-info h1,
+body.dark-mode .profile-info p {
+  color: #eeeeee;
+}
+
+body.dark-mode .school {
+  color: #bbbbbb;
+}
+
+body.dark-mode .bio {
+  color: #dddddd;
+}
+
+body.dark-mode .browse-buttons button {
+  background: #2a2a2a;
+  color: #eeeeee;
+}
+
+body.dark-mode .pass-button {
+  background: #2a2a2a !important;
+}
+
+body.dark-mode .filters-button {
+  background: #242424;
+  color: #eeeeee;
+}
+
+body.dark-mode .filters-panel {
+  background: #1e1e1e;
+  color: #eeeeee;
+}
+
+body.dark-mode .filters-panel h2,
+body.dark-mode .filters-panel h3,
+body.dark-mode .filters-panel label {
+  color: #eeeeee;
+}
+
+body.dark-mode .profile-photo-placeholder {
+  background: #292929;
+  color: #aaa;
+}
+
+/* =================================
+   DARK MODE — PROFILE
+================================= */
+
+body.dark-mode .profile-page {
+  background: #121212;
+}
+
+body.dark-mode .profile-form-container {
+  background: #121212;
+}
+
+body.dark-mode .profile-form-container input,
+body.dark-mode .profile-form-container textarea,
+body.dark-mode .profile-form-container select {
+  background: #242424;
+  color: #eeeeee;
+  border-color: #444;
+}
+
+body.dark-mode .profile-form-container input::placeholder,
+body.dark-mode .profile-form-container textarea::placeholder {
+  color: #999;
+}
+
+body.dark-mode .profile-form-container label {
+  color: #eeeeee;
+}
+
+/* =================================
+   DARK MODE — CHAT
+================================= */
+
+body.dark-mode .chat-container {
+  background: #121212;
+  color: #eeeeee;
+}
+
+body.dark-mode .chat-header {
+  background: #1c1c1c;
+  color: #eeeeee;
+  border-color: #333;
+}
+
+body.dark-mode .chat-header h2 {
+  color: #eeeeee;
+}
+
+body.dark-mode .message-input-container {
+  background: #1c1c1c;
+  border-color: #333;
+}
+
+body.dark-mode .message-input-container input {
+  background: #242424;
+  color: #eeeeee;
+}
+
+/* =================================
+   BOTTOM NAVIGATION
+================================= */
+
+.navbar {
+  position: fixed !important;
+  bottom: 0 !important;
+  top: auto !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  height: 70px !important;
+
+  display: flex !important;
+  flex-direction: row !important;
+
+  background: white;
+  border-top: 1px solid #ddd;
+  border-bottom: none;
+
+  z-index: 9999;
+}
+
+.navbar button {
+  flex: 1 1 0;
+  width: 20%;
+  height: 70px;
+  padding: 0;
+  margin: 0;
+  background: white;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  color: #222;
+}
+
+.navbar button:hover {
+  background: #f5f5f5;
+}
+
+/* =================================
+   GENERAL BUTTONS
+================================= */
+
+button {
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.login-button {
+  background: transparent;
+  padding: 12px 20px;
+}
+
+.signup-button {
+  background: #09cee0;
+  color: white;
+  padding: 12px 22px;
+  border-radius: 8px;
+}
+
+/* =================================
+   PROFILE PAGE
+================================= */
+
+.profile-page {
+  min-height: calc(100vh - 70px);
+  padding: 30px 20px 100px;
+  background: #f8f5f2;
+  position: relative;
+}
+
+.profile-form-container {
+  width: 100%;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 25px;
+  padding-top: 10px;
+}
+
+.profile-header h2 {
+  margin: 0;
+}
+
+.profile-form-container h3 {
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+.profile-form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.profile-form-container input,
+.profile-form-container textarea,
+.profile-form-container select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  background: white;
+}
+
+.profile-form-container textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.profile-form-container label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+/* =================================
+   SAVE PROFILE BUTTON
+================================= */
+
+.save-profile-button {
+  padding: 13px 26px;
+  border-radius: 999px;
+  background: #09cee0;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+
+  box-shadow: 0 4px 12px rgba(9, 206, 224, 0.3);
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
+
+  white-space: nowrap;
+}
+
+.save-profile-button:hover {
+  background: #058692;
+  transform: translateY(-2px);
+  box-shadow: 0 7px 18px rgba(9, 206, 224, 0.4);
+}
+
+.save-profile-button:active {
+  transform: scale(0.95);
+  box-shadow: 0 3px 8px rgba(9, 206, 224, 0.25);
+}
+
+body.dark-mode .save-profile-button {
+  background: #09cee0;
+  color: white;
+}
+
+body.dark-mode .save-profile-button:hover {
+  background: #09cee0;
+}
+
+/* =================================
+   THEME BUTTON
+================================= */
+
+.theme-toggle {
+  position: fixed;
+  top: 18px;
+  right: 20px;
+
+  width: 48px;
+  height: 48px;
+
+  border-radius: 50%;
+  border: none;
+
+  background: white;
+  color: #222;
+
+  font-size: 23px;
+
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  z-index: 10000;
+
+  transition:
+    transform 0.15s ease,
+    background 0.2s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.08);
+}
+
+body.dark-mode .theme-toggle {
+  background: #292929;
+  color: #eeeeee;
+}
+
+/* =================================
+   PROFILE TAG BUTTONS
+================================= */
+
+.profile-tag-button {
+  margin: 5px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  background: white;
+  color: #222;
+  cursor: pointer;
+}
+
+.profile-tag-button.selected {
+  background: #09cee0;
+  color: white;
+  border-color: #09cee0;
+}
+
+body.dark-mode .profile-tag-button {
+  background: #242424;
+  color: #eeeeee;
+  border-color: #444;
+}
+
+body.dark-mode .profile-tag-button.selected {
+  background: #09cee0;
+  color: white;
+  border-color: #09cee0;
+}
+
+/* =================================
+   EXISTING PHOTOS
+================================= */
+
+.existing-photos {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.existing-photo {
+  padding: 15px;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+}
+
+.existing-photo img {
+  display: block;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.existing-photo button {
+  padding: 9px 14px;
+  margin: 5px 5px 5px 0;
+  border-radius: 7px;
+  background: #eee;
+  color: #222;
+}
+
+.existing-photo button:hover {
+  background: #ddd;
+}
+
+.existing-photo button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+body.dark-mode .existing-photo {
+  background: #1e1e1e;
+  border-color: #333;
+}
+
+body.dark-mode .existing-photo button {
+  background: #2c2c2c;
+  color: #eeeeee;
+}
+
+body.dark-mode .existing-photo button:hover {
+  background: #383838;
+}
+
+/* =================================
+   HERO
+================================= */
+
+.hero {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 120px;
+  padding: 60px 8%;
+}
+
+.hero-text {
+  max-width: 500px;
+}
+
+.hero-text h2 {
+  font-size: 56px;
+  line-height: 1.05;
+  margin-bottom: 25px;
+}
+
+.hero-text p {
+  font-size: 20px;
+  line-height: 1.5;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.start-button {
+  background: #09cee0;
+  color: white;
+  padding: 16px 30px;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+/* =================================
+   GENERAL PROFILE CARD
+================================= */
+
+.profile-card {
+  width: 330px;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.profile-photo {
+  height: 380px;
+  background: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 20px;
+}
+
+.profile-info {
+  padding: 20px;
+}
+
+.profile-info h3 {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.profile-info p {
+  color: #666;
+  margin-top: 6px;
+}
+
+.swipe-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  padding: 15px 20px 25px;
+}
+
+.swipe-buttons button {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: #f2f2f2;
+  font-size: 24px;
+}
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 600px) {
+  .profile-page {
+    padding: 20px 15px 100px;
+  }
+
+  .profile-header {
+    align-items: center;
+  }
+
+  .save-profile-button {
+    padding: 11px 19px;
+    font-size: 14px;
+  }
+
+  .theme-toggle {
+    top: 10px;
+    right: 10px;
+    width: 44px;
+    height: 44px;
+    font-size: 21px;
+  }
+
+  .profile-form-container {
+    padding-top: 40px;
+  }
+
+  .existing-photo img {
+    width: 130px;
+    height: 130px;
+  }
+} 
+/* =========================================
+   EXTRAS
+   ========================================= */
+
+.extras-page {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 20px;
+  box-sizing: border-box;
+}
+
+.extras-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  text-align: center;
+}
+
+.extras-content h1 {
+  margin: 0;
+  font-size: 28px;
+  color: #222;
+}
+
+/* Shiny Watch Ad button */
+
+.watch-ad-button {
+  position: relative;
+  overflow: hidden;
+
+  padding: 16px 28px;
+  border: none;
+  border-radius: 999px;
+
+  background: linear-gradient(
+    135deg,
+    #09cee0,
+    #32d9e6,
+    #72e5ed
+  );
+
+  background-size: 200% 200%;
+
+  color: white;
+  font-size: 17px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 4px 14px rgba(9, 206, 224, 0.4),
+    0 0 20px rgba(9, 206, 224, 0.15);
+
+  animation:
+    extrasButtonGlow 2s ease-in-out infinite,
+    extrasButtonGradient 4s ease infinite;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* Moving shine across the button */
+
+.watch-ad-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+
+  width: 50%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.45),
+    transparent
+  );
+
+  transform: skewX(-20deg);
+
+  animation: extrasButtonShine 2.8s ease-in-out infinite;
+}
+
+.watch-ad-button:hover {
+  transform: translateY(-2px) scale(1.04);
+
+  box-shadow:
+    0 7px 20px rgba(9, 206, 224, 0.55),
+    0 0 30px rgba(9, 206, 224, 0.3);
+
+  animation: none;
+}
+
+.watch-ad-button:active {
+  transform: scale(0.96);
+}
+
+@keyframes extrasButtonGlow {
+  0%,
+  100% {
+    box-shadow:
+      0 4px 14px rgba(9, 206, 224, 0.4),
+      0 0 20px rgba(9, 206, 224, 0.15);
+  }
+
+  50% {
+    box-shadow:
+      0 6px 20px rgba(9, 206, 224, 0.55),
+      0 0 30px rgba(9, 206, 224, 0.25);
+  }
+}
+
+@keyframes extrasButtonGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes extrasButtonShine {
+  0% {
+    left: -75%;
+  }
+
+  45%,
+  100% {
+    left: 125%;
+  }
+}
+
+/* Dark mode */
+
+body.dark-mode .extras-content h1 {
+  color: #f5f5f5;
+}
+.matches-nav-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.matches-unread-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+
+  box-sizing: border-box;
+
+  border-radius: 999px;
+
+  background: #ff3b30;
+  color: white;
+
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+}

@@ -1,0 +1,595 @@
+/* ================================
+   BROWSE PAGE
+================================ */
+
+.browse-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 70px);
+  padding: 30px 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* ================================
+   PROFILE CARD
+================================ */
+
+.profile-card {
+  width: 100%;
+  max-width: 420px;
+  overflow: hidden;
+  border-radius: 22px;
+  background: white;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.14);
+  user-select: none;
+  touch-action: pan-y;
+  transition: box-shadow 0.2s ease;
+}
+
+/* ================================
+   PHOTOS
+================================ */
+
+.photo-container {
+  position: relative;
+  width: 100%;
+}
+
+.profile-photo {
+  display: block;
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+}
+
+.profile-photo-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 450px;
+  background: #eeeeee;
+  color: #777777;
+  font-size: 24px;
+}
+
+/* Photo progress indicators */
+
+.photo-indicators {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  gap: 5px;
+  z-index: 2;
+}
+
+.photo-indicator {
+  height: 4px;
+  flex: 1;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.45);
+  transition: background 0.2s ease;
+}
+
+.photo-indicator.active {
+  background: white;
+}
+
+/* Photo navigation arrows */
+
+.photo-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 90px;
+  border: none;
+  background: rgba(0, 0, 0, 0.12);
+  color: white;
+  font-size: 45px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+  z-index: 3;
+}
+
+.photo-nav:hover:not(:disabled) {
+  background: rgba(0, 0, 0, 0.28);
+}
+
+.photo-nav:disabled {
+  opacity: 0;
+  cursor: default;
+}
+
+.photo-nav-left {
+  left: 0;
+  border-radius: 0 10px 10px 0;
+}
+
+.photo-nav-right {
+  right: 0;
+  border-radius: 10px 0 0 10px;
+}
+
+/* ================================
+   PROFILE INFORMATION
+================================ */
+
+.profile-info {
+  padding: 20px 20px 12px;
+}
+
+.profile-info h1 {
+  margin: 0 0 5px;
+  font-size: 28px;
+  line-height: 1.2;
+  color: #222;
+}
+
+.school {
+  font-weight: bold;
+  margin: 6px 0;
+  color: #555;
+}
+
+.profile-info > p:not(.school):not(.bio) {
+  margin: 5px 0;
+  color: #666;
+  text-transform: capitalize;
+}
+
+.bio {
+  line-height: 1.5;
+  margin: 12px 0 0;
+  color: #333;
+  white-space: pre-wrap;
+}
+
+/* ================================
+   PROFILE TAGS
+================================ */
+
+.profile-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.profile-tag {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: #09cee0;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ================================
+   SWIPE BUTTONS
+================================ */
+
+.browse-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  padding: 12px 20px 25px;
+}
+
+.browse-buttons button {
+  width: 65px;
+  height: 65px;
+  border: none;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+  font-size: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.browse-buttons button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
+}
+
+.browse-buttons button:active {
+  transform: scale(0.95);
+}
+
+/* Pass */
+
+.pass-button {
+  background: #f5f5f5 !important;
+}
+
+/* Like */
+
+.like-button {
+  background: #09cee0 !important;
+  color: white;
+}
+
+/* Block */
+
+.block-button {
+  width: 60px !important;
+  height: 60px !important;
+  background: #555 !important;
+  color: white !important;
+  font-size: 26px !important;
+}
+
+.block-button:hover {
+  background: #333 !important;
+}
+
+/* ================================
+   SWIPE EFFECTS
+================================ */
+
+.swipe-like {
+  box-shadow:
+    0 0 0 4px rgba(0, 200, 100, 0.25),
+    0 0 35px rgba(0, 200, 100, 0.65);
+}
+
+.swipe-pass {
+  box-shadow:
+    0 0 0 4px rgba(255, 80, 80, 0.25),
+    0 0 35px rgba(255, 80, 80, 0.65);
+}
+
+/* ================================
+   FILTER BUTTON
+================================ */
+
+.filters-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  padding: 10px 18px;
+
+  border: none;
+  border-radius: 20px;
+
+  background: white;
+  color: #333;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+
+  cursor: pointer;
+
+  z-index: 10;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.filters-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.17);
+}
+
+.filters-button:active {
+  transform: scale(0.96);
+}
+
+/* ================================
+   FILTER PANEL
+================================ */
+
+.filters-panel {
+  position: absolute;
+  top: 65px;
+  right: 20px;
+
+  width: 260px;
+  max-height: calc(100vh - 150px);
+
+  overflow-y: auto;
+
+  padding: 20px;
+
+  background: white;
+  border-radius: 16px;
+
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+
+  z-index: 20;
+}
+
+.filters-panel h2 {
+  margin: 0 0 18px;
+  font-size: 22px;
+}
+
+.filters-panel h3 {
+  margin: 16px 0 8px;
+  font-size: 15px;
+  color: #555;
+}
+
+.filters-panel label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 5px 0;
+
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.filters-panel input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 600px) {
+
+  .browse-container {
+    min-height: calc(100vh - 70px);
+    padding: 10px;
+    align-items: flex-start;
+    padding-top: 55px;
+  }
+
+  .profile-card {
+    max-width: 100%;
+    border-radius: 16px;
+  }
+
+  .profile-photo,
+  .profile-photo-placeholder {
+    height: 55vh;
+    max-height: 500px;
+    min-height: 350px;
+  }
+
+  .profile-info {
+    padding: 16px 16px 10px;
+  }
+
+  .profile-info h1 {
+    font-size: 24px;
+  }
+
+  .browse-buttons {
+    gap: 18px;
+    padding: 10px 15px 20px;
+  }
+
+  .browse-buttons button {
+    width: 60px;
+    height: 60px;
+    font-size: 25px;
+  }
+
+  .block-button {
+    width: 55px !important;
+    height: 55px !important;
+  }
+
+  .filters-button {
+    top: 10px;
+    right: 10px;
+  }
+
+  .filters-panel {
+    top: 55px;
+    right: 10px;
+    left: 10px;
+    width: auto;
+    max-height: 70vh;
+  }
+
+  .photo-nav {
+    width: 42px;
+    height: 75px;
+    font-size: 38px;
+  }
+
+  .profile-tags {
+    gap: 6px;
+  }
+
+  .profile-tag {
+    padding: 5px 10px;
+    font-size: 13px;
+  }
+    .random-chat-button {
+    top: 10px;
+    left: 10px;
+    font-size: 13px;
+    padding: 9px 14px;
+  }
+}
+/* =========================================
+   RANDOM CHAT BUTTON
+   ========================================= */
+
+.random-chat-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+
+  padding: 11px 18px;
+  border: none;
+  border-radius: 999px;
+
+  background: linear-gradient(
+    135deg,
+    #09cee0,
+    #32d9e6,
+    #72e5ed
+  );
+
+  background-size: 200% 200%;
+
+  color: white;
+  font-size: 15px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 4px 14px rgba(9, 206, 224, 0.4),
+    0 0 20px rgba(9, 206, 224, 0.15);
+
+  z-index: 100;
+
+  animation:
+    randomChatGlow 2s ease-in-out infinite,
+    randomChatGradient 4s ease infinite;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.random-chat-button:hover {
+  transform: translateY(-2px) scale(1.03);
+
+  box-shadow:
+    0 7px 20px rgba(9, 206, 224, 0.55),
+    0 0 30px rgba(9, 206, 224, 0.3);
+
+  animation: none;
+}
+
+.random-chat-button:active {
+  transform: scale(0.96);
+}
+
+@keyframes randomChatGlow {
+  0%, 100% {
+    box-shadow:
+      0 4px 14px rgba(9, 206, 224, 0.4),
+      0 0 20px rgba(9, 206, 224, 0.15);
+  }
+
+  50% {
+    box-shadow:
+      0 6px 22px rgba(9, 206, 224, 0.6),
+      0 0 32px rgba(9, 206, 224, 0.3);
+  }
+}
+
+@keyframes randomChatGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+/* =========================================
+   DARK MODE - BROWSE
+   ========================================= */
+
+body.dark-mode .profile-card {
+  background: #1e1e1e;
+  color: #f5f5f5;
+  box-shadow:
+    0 6px 25px rgba(0, 0, 0, 0.45);
+}
+
+body.dark-mode .profile-info h1 {
+  color: #f5f5f5;
+}
+
+body.dark-mode .profile-info > p:not(.school):not(.bio) {
+  color: #bdbdbd;
+}
+
+body.dark-mode .profile-info .school {
+  color: #cccccc;
+}
+
+body.dark-mode .profile-info .bio {
+  color: #dddddd;
+}
+
+body.dark-mode .profile-tag {
+  background: #09cee0;
+  color: white;
+}
+
+body.dark-mode .profile-photo-placeholder {
+  background: #292929;
+  color: #aaa;
+}
+
+body.dark-mode .browse-buttons button {
+  background: #292929;
+  color: #f5f5f5;
+  box-shadow:
+    0 3px 12px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .browse-buttons button:hover {
+  box-shadow:
+    0 5px 18px rgba(0, 0, 0, 0.55);
+}
+
+body.dark-mode .pass-button {
+  background: #292929 !important;
+}
+
+body.dark-mode .like-button {
+  background: #09cee0 !important;
+  color: white !important;
+}
+
+body.dark-mode .block-button {
+  background: #444 !important;
+  color: white !important;
+}
+
+body.dark-mode .filters-button {
+  background: #292929;
+  color: #f5f5f5;
+  box-shadow:
+    0 3px 12px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .filters-panel {
+  background: #1e1e1e;
+  color: #f5f5f5;
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.55);
+}
+
+body.dark-mode .filters-panel h3 {
+  color: #bdbdbd;
+}
