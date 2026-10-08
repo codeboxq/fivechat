@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { supabase } from "./supabaseClient";
 
 function Profile() {
@@ -16,7 +17,7 @@ function Profile() {
   const [diamonds, setDiamonds] = useState(0);
 
   const [message, setMessage] = useState("");
-
+  const navigate = useNavigate();
   const [darkMode, setDarkMode] = useState(
     localStorage.getItem("darkMode") === "true"
   );
@@ -618,6 +619,16 @@ function Profile() {
         </form>
 
         <p>{message}</p>
+
+{profileComplete && (
+  <button
+    type="button"
+    onClick={() => navigate("/browse")}
+    className="save-profile-button"
+  >
+    Continue to Browse →
+  </button>
+)}
       </div>
     </div>
   );
